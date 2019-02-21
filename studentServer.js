@@ -9,19 +9,13 @@ var httpServer = http.createServer(app);
 httpServer.listen(4480);
 
 
-app.get('/', function (req, res) {
-    res.send('hello')
-
-});
-
-
 // adding functionality to log the requests
 app.use(function (req, res, next) {
-    var filename = path.basename(req.url);
-    var extension = path.extname(filename);
-    console.log("The file " + filename + " was requested.");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
 });
+
 
 app.use(express.static(__dirname));
 
