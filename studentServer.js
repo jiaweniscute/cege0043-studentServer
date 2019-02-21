@@ -14,12 +14,6 @@ app.get('/', function (req, res) {
 
 });
 
-app.get('/test.html', function (req, res) {
-    console.log('test.html requested');
-    // note that __dirname gives the path to the studentServer.js file
-    res.sendFile(__dirname + '/test.html');
-
-});
 
 // adding functionality to log the requests
 app.use(function (req, res, next) {
@@ -28,4 +22,6 @@ app.use(function (req, res, next) {
     console.log("The file " + filename + " was requested.");
     next();
 });
+
+app.use(express.static(__dirname));
 
